@@ -16,7 +16,7 @@ class Voto(models.Model):
     """Clase que crea el voto con la fecha de las elecciones"""
     Fecha = models.DateTimeField(auto_now = True)
     Candidato = models.ForeignKey(Candidato, on_delete = models.CASCADE)
-    #votes = models.IntegerField(default=0)
+    votes = models.IntegerField(default=0)
     def __str__(self):
         return "Voto por el Candidato: {1}".format(self.Fecha, self.Candidato)
 class Votante(models.Model):
@@ -25,7 +25,5 @@ class Votante(models.Model):
     Documento = models.CharField(max_length = 10 )
     Email = models.EmailField(max_length = 256)
     Voto = models.ForeignKey(Voto, on_delete = models.CASCADE)
-    #votar = models.IntegerField(Voto,default = 0)
     def __str__(self):
-        return "Nombre del votante :{0}, Cedula del votante: {1} , Correo: {2} , {3}".format(self.Nombre, self.Documento, self.Email,self.Voto)
-
+        return "Nombre del votante :{0}, Cedula del votante: {1} , Correo: {2}".format(self.Nombre, self.Documento, self.Email)
