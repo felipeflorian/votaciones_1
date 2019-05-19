@@ -4,29 +4,16 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
 # Acá se Crea la visa del archivo your views here.
-class IndexView(generic.ListView):
-    template_name = 'elecciones/index.html'
-    context_object_name = 'latest_question_list'
-    def get_queryset(self):
-        """Return the last five published questions."""
-        return Voto.objects.order_by('-pub_date')[:5]
 
-class DetailView(generic.DetailView):
-    model = Voto
-    template_name = 'elecciones/detalles.html'
 
-class ResultsView(generic.DetailView):
-    model = Voto
-    template_name = 'elecciones/resultados.html'
-
-"""def index(solicitud):
+def index(solicitud):
     return HttpResponse("Hello, world. You're at the polls index.")
 
 def Detalles(solicitud, pregunta_id):
     return HttpResponse("Esta es su opcion %s." % pregunta_id)
 def Resultados(solicitud, pregunta_id):
     question = get_object_or_404(Voto, pk=pregunta_id)
-    return render(solicitud, 'elecciones/resultados.html', {'question': question})"""
+    return render(solicitud, 'elecciones/resultados.html', {'question': question})
 
     #response = "Esta este es el resultado %s."
     #return HttpResponse(response % pregunta_id)
